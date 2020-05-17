@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const lib = require('../dist/pass-hash-generator.cjs.js');
+const lib = require('../dist/pass-hash-generator.min.cjs.js');
 
 describe('lib', function() {
     it('sha1 for test:amazon should return Kaqk1bRiiZ55fBYfHTfBd2AD1Hg', function() {
