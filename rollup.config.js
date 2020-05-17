@@ -4,8 +4,16 @@ import pkg from './package.json';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from "rollup-plugin-terser";
+import dts from "rollup-plugin-dts";
 
-export default [
+export default [{
+        input: 'index.d.ts',
+        output: {
+            file: 'dist/index.d.ts',
+            format: 'es'
+        },
+        plugins: [dts()]
+    },
     // browser-friendly UMD build
     {
         input: 'src/main.js',
