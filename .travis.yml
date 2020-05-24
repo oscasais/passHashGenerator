@@ -8,8 +8,21 @@ cache:
     - "node_modules"
 script:
   - npm run test
+env:
+  global:
+    - GITHUB_USERNAME=oscasais
+
+before_deploy:
+  - export $NPM_NEW_VERSION = $(npm version patch)
 deploy:
   provider: npm
   email: $NPM_EMAIL
   api_key: $NPM_AUTH_TOKEN
-  tag: next
+  on:
+    branch: master
+    tags: true
+after_deploy:
+  - git checkout -b master
+  - git add package.json package-lock.json
+  - git commit --message "Travis build: $NPM_NEW_VERSION"
+  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/.git master
