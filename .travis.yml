@@ -9,8 +9,8 @@ cache:
 script:
   - npm run test
 before_deploy:
-  - npm version --no-git-tag-version ${TRAVIS_TAG}
   - git checkout -b master
+  - npm version --no-git-tag-version ${TRAVIS_TAG}
   - git add package.json package-lock.json
   - git status
   - git push https://${GITHUB_TOKEN}@github.com/oscasais/passHashGenerator.git master
