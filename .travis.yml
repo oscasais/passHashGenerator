@@ -8,12 +8,9 @@ cache:
     - "node_modules"
 script:
   - npm run test
-env:
-  global:
-    - GITHUB_USERNAME=oscasais
-
 before_deploy:
-  - export $NPM_NEW_VERSION = $(npm version patch)
+  - export $TAG_VERSION=$(git describe)
+  - npm version ${TAG_VERSION}
 deploy:
   provider: npm
   email: $NPM_EMAIL
