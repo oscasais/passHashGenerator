@@ -12,6 +12,7 @@ before_deploy:
   - git checkout -b master
   - npm version --no-git-tag-version ${TRAVIS_TAG}
   - git status
+  - git add .
   - git commit -m "Version updated to `${TRAVIS_TAG}`"
   - git push https://${GITHUB_TOKEN}@github.com/oscasais/passHashGenerator.git master
 deploy:
