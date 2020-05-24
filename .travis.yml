@@ -12,7 +12,7 @@ before_deploy:
   - npm version --no-git-tag-version ${TRAVIS_TAG}
   - git checkout -b master
   - git add package.json package-lock.json
-  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/.git master
+  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/passHashGenerator.git master
 deploy:
   provider: npm
   email: $NPM_EMAIL
