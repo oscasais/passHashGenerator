@@ -9,7 +9,7 @@ cache:
 script:
   - npm run test
 before_deploy:
-  - npm version ${TRAVIS_TAG}
+  - npm version --no-git-tag-version ${TRAVIS_TAG}
 deploy:
   provider: npm
   email: $NPM_EMAIL
