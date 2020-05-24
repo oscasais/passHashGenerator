@@ -10,6 +10,10 @@ script:
   - npm run test
 before_deploy:
   - npm version --no-git-tag-version ${TRAVIS_TAG}
+  - git checkout -b master
+  - git add package.json package-lock.json
+  - git commit --message "Travis build: ${TRAVIS_TAG}"
+  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/.git master
 deploy:
   provider: npm
   email: $NPM_EMAIL
@@ -17,8 +21,3 @@ deploy:
   on:
     branch: master
     tags: true
-after_deploy:
-  - git checkout -b master
-  - git add package.json package-lock.json
-  - git commit --message "Travis build: ${TRAVIS_TAG}"
-  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/.git master
