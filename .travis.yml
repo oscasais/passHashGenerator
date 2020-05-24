@@ -9,8 +9,7 @@ cache:
 script:
   - npm run test
 before_deploy:
-  - export $TAG_VERSION=$(git describe)
-  - npm version ${TAG_VERSION}
+  - npm version $TRAVIS_TAG
 deploy:
   provider: npm
   email: $NPM_EMAIL
@@ -21,5 +20,5 @@ deploy:
 after_deploy:
   - git checkout -b master
   - git add package.json package-lock.json
-  - git commit --message "Travis build: $NPM_NEW_VERSION"
+  - git commit --message "Travis build: $TRAVIS_TAG"
   - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/.git master
