@@ -13,7 +13,7 @@ before_deploy:
   - git checkout -b master
   - git add package.json package-lock.json
   - git status
-  - git push -q https://${GITHUB_TOKEN}@github.com/oscasais/passHashGenerator.git master
+  - git push https://${GITHUB_TOKEN}@github.com/oscasais/passHashGenerator.git master
 deploy:
   provider: npm
   email: $NPM_EMAIL
