@@ -1,6 +1,6 @@
 {
     "name": "pass-hash-generator",
-    "version": "1.2.11",
+    "version": "1.2.12",
     "description": "From a given string get its hashed value using SHA1 or SHA256",
     "main": "dist/pass-hash-generator.min.cjs.js",
     "module": "dist/pass-hash-generator.min.esm.js",
